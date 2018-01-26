@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="row">
+    <form   #signUp= "ngForm" novalidate [formGroup]="form" (ngSubmit)="register(signUp.value)">
+        <div class="form-group">
+            <h3>Register To Your Account</h3>
+            <label>User Name</label>
+            <input type="email" name="user" placeholder="Email Address" class="form-control" formControlName="email">
+            <label>Password</label>
+            <input type="password" name="pass" placeholder="Password" class="form-control" formControlName="password"><br>
+            <input type="submit" name="register" class="btn btn-danger" value="register">
+        </div>
+    </form>     
+  </div>
+</div>  

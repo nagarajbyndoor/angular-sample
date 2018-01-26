@@ -1,0 +1,5 @@
+<h3>Contact List</h3>
+<ul>
+  <li (click)="onSelect(contact)" [class.selected]="isSelected(contact)" class="user-badge" *ngFor="let contact of contacts">
+    <span class="badge badge-danger">{{contact.id}}</span> {{contact.name}}</li>
+</ul> 

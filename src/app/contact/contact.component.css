@@ -1,0 +1,8 @@
+.user-badge {
+    list-style: none !important;
+}
+
+.selected {
+    background-color: brown;
+    color: wheat;
+}

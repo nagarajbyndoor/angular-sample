@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="row">
+    <form   #signIn= "ngForm" novalidate [formGroup]="form" (ngSubmit)="login(signIn.value)">
+        <div class="form-group">
+            <h3>Login To Your Account</h3>
+            <label>User Name</label>
+            <input type="email" name="user" placeholder="Email Address" class="form-control" formControlName="email">
+            <label>Password</label>
+            <input type="password" name="pass" placeholder="Password" class="form-control" formControlName="password"><br>
+            <input type="submit" name="login" class="btn btn-danger" value="login">
+            <div>
+                <a href="#" (click)="signUp()">Register</a> - <a routerlink="forgot-password" (click)="forgotPass()">Forgot Password</a> 
+            </div>
+            <div>
+                <button class="btn btn-info" (click)="loginWithGoogle()">Login with Google</button>
+            </div>
+        </div>
+    </form>     
+  </div>
+</div>  
