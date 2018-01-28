@@ -16,6 +16,9 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
@@ -26,12 +29,15 @@ import { environment } from '../environments/environment';
 import { AuthService } from './shared/auth/auth.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SearchComponent } from './search/search.component';
+import { FilterPipe } from './search/filter.pipe';
+import { AuthGuard } from './auth.guard';
 
 
 const appRoutes: Routes = [
 //  { path: '', component: HomeComponent },
- { path: '', redirectTo: '/home', pathMatch:'full'},
- { path: 'home', component: HomeComponent },
+ { path: '', redirectTo: '/sign-in', pathMatch:'full'},
+ { path: 'home', canActivate:[AuthGuard], component: HomeComponent },
  { path: 'registration', component: RegistrationComponent },
  { path: 'login', component: LoginComponent },
  { path: 'contact', component: ContactComponent },
@@ -39,6 +45,7 @@ const appRoutes: Routes = [
  { path: 'animation', component: AnimationComponent },
  { path: 'register', component: SignUpComponent },
  { path: 'sign-in', component: SignInComponent },
+ { path: 'search', component: SearchComponent },
  { path: 'forgot-password', component: ForgotPasswordComponent },
  { path: '**', component: PageNotFoundComponent}
 ];
@@ -56,21 +63,26 @@ const appRoutes: Routes = [
     AnimationComponent,
     SignInComponent,
     SignUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SearchComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule ,
     RouterModule.forRoot(
      appRoutes,
      { enableTracing: true } // <-- debugging purposes only
    )
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+      <form id="filter">
+        <h2>Pizza Listing</h2>
+        <div class="form-group">
+            <label>Filter pizza by name:</label>
+            <input type="text" class="form-control" [(ngModel)]="term"/>
+        </div>
+      </form>
+      <ul>
+        <li *ngFor="let pizza of pizzas | filter:term">
+          <h3>{{pizza.name}}</h3> 
+        </li>
+      </ul>
+  </div>
+</div>

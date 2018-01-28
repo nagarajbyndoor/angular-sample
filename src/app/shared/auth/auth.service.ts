@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-
+  
   public user: Observable<firebase.User>
   constructor(private afAuth: AngularFireAuth) { 
     this.user = afAuth.authState;
@@ -41,5 +41,5 @@ export class AuthService {
       .then(() => console.log("email sent"))
       .catch((error) => console.log(error))
   }
-  
+
 }

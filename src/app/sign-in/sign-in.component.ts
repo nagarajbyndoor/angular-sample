@@ -28,11 +28,21 @@ export class SignInComponent implements OnInit {
   login(formValue:any) {
     console.log(formValue.email);
     console.log(formValue.password);
-    this.authService.login(formValue.email, formValue.password)
+
+    if(formValue.email == "admin@admin.com" && formValue.password == "admin@123"){
+      this.authService.login(formValue.email, formValue.password)
+      .subscribe(
+        success => this.router.navigate(['/animation']),
+        error=>alert(error)
+      );
+    }
+    else {
+      this.authService.login(formValue.email, formValue.password)
       .subscribe(
         success => this.router.navigate(['/home']),
         error=>alert(error)
       );
+    }
   }
 
   loginWithGoogle() {
