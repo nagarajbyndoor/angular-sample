@@ -45,9 +45,9 @@
 		<button type="button" (click)="onCLick()" class="btn btn-danger">Click Me!</button>
 		<hr/>
 		<h4>Events with values</h4>
-		<button type="button" (mouseover)="onCLickGetValue(dempInput.value)" class="btn btn-outline-info">Click</button>
+		<button type="button" (mouseover)="onCLickGetValue(dempInput.id)" class="btn btn-outline-info">Click</button>
 		<button type="button" (click)="onCLickGetValue($event)" class="btn btn-outline-warning">MouseEvent</button>
-		<input type="text" class="form-control" #dempInput  placeholder="Enter the vaule then mouseover on click button">
+		<input type="text" class="form-control" #dempInput  id="testId" placeholder="Enter the vaule then mouseover on click button">
 	</div>
 </div>
 <hr/>
